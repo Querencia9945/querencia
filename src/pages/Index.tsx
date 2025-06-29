@@ -25,7 +25,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
-              onClick={() => navigate('/login')}
+              onClick={() => navigate('/events')}
               className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-4"
             >
               Get Started
