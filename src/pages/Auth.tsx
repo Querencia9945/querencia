@@ -77,11 +77,6 @@ const Auth = () => {
               >
                 {loading ? "Signing in..." : "Sign In"}
               </Button>
-              <div className="text-center text-sm text-gray-600 mt-4 p-3 bg-blue-50 rounded">
-                <p className="font-semibold">Login Credentials:</p>
-                <p>Username: Querencia stuff</p>
-                <p>Password: 994500</p>
-              </div>
             </form>
           </CardContent>
         </Card>
