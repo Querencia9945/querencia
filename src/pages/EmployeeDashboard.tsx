@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
+import AIChat from "@/components/AIChat";
 
 const EmployeeDashboard = () => {
   const navigate = useNavigate();
@@ -13,13 +14,13 @@ const EmployeeDashboard = () => {
       <div className="max-w-7xl mx-auto py-8 px-4">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Employee Dashboard</h1>
-          <p className="text-gray-600">Manage events, track attendance, and oversee platform activities.</p>
+          <p className="text-gray-600">Manage events, internships, testimonials, and oversee platform activities.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/events')}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/manage-events')}>
             <CardHeader>
-              <CardTitle className="text-blue-600">Event Management</CardTitle>
+              <CardTitle className="text-blue-600">Manage Events</CardTitle>
               <CardDescription>
                 Create, edit, and manage events. View registrations and participant details.
               </CardDescription>
@@ -31,73 +32,58 @@ const EmployeeDashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/manage-internships')}>
             <CardHeader>
-              <CardTitle className="text-green-600">Attendance Tracking</CardTitle>
-              <CardDescription>
-                Monitor event attendance, generate reports, and track participation metrics.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button variant="ghost" className="text-green-600 hover:text-green-700">
-                View Reports →
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <CardTitle className="text-purple-600">User Management</CardTitle>
-              <CardDescription>
-                Manage user accounts, permissions, and platform access controls.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button variant="ghost" className="text-purple-600 hover:text-purple-700">
-                Manage Users →
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/internships')}>
-            <CardHeader>
-              <CardTitle className="text-orange-600">Internship Programs</CardTitle>
+              <CardTitle className="text-green-600">Manage Internships</CardTitle>
               <CardDescription>
                 Create and manage internship opportunities and track applications.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button variant="ghost" className="text-orange-600 hover:text-orange-700">
-                Manage Programs →
+              <Button variant="ghost" className="text-green-600 hover:text-green-700">
+                Manage Internships →
               </Button>
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/manage-testimonials')}>
             <CardHeader>
-              <CardTitle className="text-red-600">Analytics</CardTitle>
+              <CardTitle className="text-purple-600">Success Stories</CardTitle>
               <CardDescription>
-                View platform analytics, user engagement, and performance metrics.
+                Manage testimonials and success stories from users.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <Button variant="ghost" className="text-red-600 hover:text-red-700">
-                View Analytics →
+              <Button variant="ghost" className="text-purple-600 hover:text-purple-700">
+                Manage Stories →
               </Button>
             </CardContent>
           </Card>
+        </div>
 
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/testimonials')}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <AIChat />
+          
+          <Card>
             <CardHeader>
-              <CardTitle className="text-teal-600">Content Management</CardTitle>
-              <CardDescription>
-                Manage testimonials, FAQs, and other platform content.
-              </CardDescription>
+              <CardTitle>Quick Stats</CardTitle>
+              <CardDescription>Platform overview</CardDescription>
             </CardHeader>
             <CardContent>
-              <Button variant="ghost" className="text-teal-600 hover:text-teal-700">
-                Manage Content →
-              </Button>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Total Events</span>
+                  <span className="font-semibold">-</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Active Internships</span>
+                  <span className="font-semibold">-</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-600">Success Stories</span>
+                  <span className="font-semibold">-</span>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>

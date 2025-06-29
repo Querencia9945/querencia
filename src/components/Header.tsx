@@ -2,13 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -70,39 +63,28 @@ const Header = () => {
           </div>
           <div className="flex items-center space-x-4">
             {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Avatar className="cursor-pointer">
-                    <AvatarImage src={user.user_metadata?.avatar_url} />
-                    <AvatarFallback>
-                      {user.user_metadata?.full_name?.charAt(0) || user.email?.charAt(0)}
-                    </AvatarFallback>
-                  </Avatar>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => navigate('/dashboard')}>
-                    Dashboard
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={handleSignOut}>
-                    Sign Out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <>
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-gray-700">Welcome, {user.username}</span>
                 <Button 
                   variant="outline"
-                  onClick={() => navigate('/auth')}
+                  onClick={() => navigate('/employee-dashboard')}
                 >
-                  Login
+                  Dashboard
                 </Button>
                 <Button 
-                  onClick={() => navigate('/auth')}
-                  className="bg-blue-600 hover:bg-blue-700"
+                  variant="outline"
+                  onClick={handleSignOut}
                 >
-                  Get Started
+                  Sign Out
                 </Button>
-              </>
+              </div>
+            ) : (
+              <Button 
+                onClick={() => navigate('/auth')}
+                className="bg-blue-600 hover:bg-blue-700"
+              >
+                Employee Login
+              </Button>
             )}
           </div>
         </div>

@@ -1,16 +1,17 @@
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { User, Session } from '@supabase/supabase-js';
-import { supabase } from '@/integrations/supabase/client';
+import React, { createContext, useContext, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+
+interface User {
+  id: string;
+  username: string;
+  role: string;
+}
 
 interface AuthContextType {
   user: User | null;
-  session: Session | null;
   loading: boolean;
-  signUp: (email: string, password: string, metadata?: any) => Promise<{ error: any }>;
-  signIn: (email: string, password: string) => Promise<{ error: any }>;
-  signInWithGoogle: () => Promise<{ error: any }>;
+  signIn: (username: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<{ error: any }>;
 }
 
@@ -25,91 +26,44 @@ export const useAuth = () => {
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(() => {
+    // Check localStorage for existing user
+    const savedUser = localStorage.getItem('querencia_user');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => {
-    // Set up auth state listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        console.log('Auth state changed:', event, session);
-        setSession(session);
-        setUser(session?.user ?? null);
-        setLoading(false);
+  const signIn = async (username: string, password: string) => {
+    try {
+      setLoading(true);
+      
+      // Hardcoded credentials check
+      if (username === 'Querencia stuff' && password === '994500') {
+        const userData = {
+          id: 'employee-1',
+          username: 'Querencia stuff',
+          role: 'employee'
+        };
         
-        if (event === 'SIGNED_IN') {
-          toast({
-            title: "Welcome!",
-            description: "You have successfully signed in.",
-          });
-        }
-      }
-    );
-
-    // Check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
-  }, [toast]);
-
-  const signUp = async (email: string, password: string, metadata?: any) => {
-    try {
-      const redirectUrl = `${window.location.origin}/`;
-      const { error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          emailRedirectTo: redirectUrl,
-          data: metadata || {}
-        }
-      });
-      
-      if (error) {
+        setUser(userData);
+        localStorage.setItem('querencia_user', JSON.stringify(userData));
+        
         toast({
-          title: "Sign up failed",
-          description: error.message,
-          variant: "destructive"
+          title: "Welcome!",
+          description: "You have successfully signed in.",
         });
+        
+        return { error: null };
       } else {
-        toast({
-          title: "Check your email",
-          description: "We've sent you a confirmation link.",
-        });
-      }
-      
-      return { error };
-    } catch (error: any) {
-      toast({
-        title: "Sign up failed",
-        description: error.message,
-        variant: "destructive"
-      });
-      return { error };
-    }
-  };
-
-  const signIn = async (email: string, password: string) => {
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      
-      if (error) {
+        const error = new Error('Invalid credentials');
         toast({
           title: "Sign in failed",
-          description: error.message,
+          description: "Invalid username or password",
           variant: "destructive"
         });
+        return { error };
       }
-      
-      return { error };
     } catch (error: any) {
       toast({
         title: "Sign in failed",
@@ -117,55 +71,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         variant: "destructive"
       });
       return { error };
-    }
-  };
-
-  const signInWithGoogle = async () => {
-    try {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/`
-        }
-      });
-      
-      if (error) {
-        toast({
-          title: "Google sign in failed",
-          description: error.message,
-          variant: "destructive"
-        });
-      }
-      
-      return { error };
-    } catch (error: any) {
-      toast({
-        title: "Google sign in failed",
-        description: error.message,
-        variant: "destructive"
-      });
-      return { error };
+    } finally {
+      setLoading(false);
     }
   };
 
   const signOut = async () => {
     try {
-      const { error } = await supabase.auth.signOut();
-      
-      if (error) {
-        toast({
-          title: "Sign out failed",
-          description: error.message,
-          variant: "destructive"
-        });
-      } else {
-        toast({
-          title: "Signed out",
-          description: "You have been signed out successfully.",
-        });
-      }
-      
-      return { error };
+      setUser(null);
+      localStorage.removeItem('querencia_user');
+      toast({
+        title: "Signed out",
+        description: "You have been signed out successfully.",
+      });
+      return { error: null };
     } catch (error: any) {
       toast({
         title: "Sign out failed",
@@ -178,11 +97,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const value = {
     user,
-    session,
     loading,
-    signUp,
     signIn,
-    signInWithGoogle,
     signOut,
   };
 
