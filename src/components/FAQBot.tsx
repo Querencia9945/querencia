@@ -96,34 +96,36 @@ const FAQBot = () => {
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-40 w-80 h-96 bg-white rounded-lg shadow-xl border">
           <Card className="h-full flex flex-col">
-            <CardHeader className="pb-2">
+            <CardHeader className="pb-2 flex-shrink-0">
               <CardTitle className="text-lg text-green-700">FAQ Assistant</CardTitle>
             </CardHeader>
-            <CardContent className="flex-1 flex flex-col p-4">
-              <ScrollArea className="flex-1 mb-4 p-2 border rounded">
-                {messages.map((message) => (
-                  <div key={message.id} className={`mb-4 ${message.role === 'user' ? 'text-right' : 'text-left'}`}>
-                    <div className={`inline-block p-2 rounded max-w-xs ${
-                      message.role === 'user' 
-                        ? 'bg-green-600 text-white' 
-                        : 'bg-gray-100 text-gray-900'
-                    }`}>
-                      {message.content}
+            <CardContent className="flex-1 flex flex-col p-4 min-h-0">
+              <ScrollArea className="flex-1 mb-4 p-2 border rounded h-full overflow-y-auto">
+                <div className="space-y-4">
+                  {messages.map((message) => (
+                    <div key={message.id} className={`${message.role === 'user' ? 'text-right' : 'text-left'}`}>
+                      <div className={`inline-block p-3 rounded-lg max-w-[250px] break-words ${
+                        message.role === 'user' 
+                          ? 'bg-green-600 text-white ml-auto' 
+                          : 'bg-gray-100 text-gray-900'
+                      }`}>
+                        <div className="text-sm">{message.content}</div>
+                      </div>
+                      <div className="text-xs text-gray-500 mt-1">
+                        {message.timestamp.toLocaleTimeString()}
+                      </div>
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">
-                      {message.timestamp.toLocaleTimeString()}
+                  ))}
+                  {loading && (
+                    <div className="text-left">
+                      <div className="inline-block p-3 rounded-lg bg-gray-100">
+                        <div className="animate-pulse text-sm">Thinking...</div>
+                      </div>
                     </div>
-                  </div>
-                ))}
-                {loading && (
-                  <div className="text-left mb-4">
-                    <div className="inline-block p-2 rounded bg-gray-100">
-                      <div className="animate-pulse">Thinking...</div>
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </ScrollArea>
-              <div className="flex gap-2">
+              <div className="flex gap-2 flex-shrink-0">
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}

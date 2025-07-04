@@ -13,37 +13,49 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      {/* Hero Section - Matching the provided design */}
-      <section className="py-20 px-4 bg-white">
+      {/* Hero Section - Exact match to provided design */}
+      <section className="py-20 px-4 bg-white min-h-screen flex items-center justify-center">
         <div className="max-w-7xl mx-auto text-center">
           {/* Logo and Title */}
-          <div className="mb-8">
-            <div className="w-64 h-64 mx-auto mb-8 relative">
-              <div className="w-full h-full rounded-full border-8 border-green-700 flex items-center justify-center bg-white relative">
-                {/* Decorative leaves */}
-                <div className="absolute -top-4 -right-4 text-green-600 text-3xl">🌿</div>
-                <div className="absolute -bottom-4 -left-4 text-green-600 text-3xl">🌿</div>
-                <div className="absolute top-8 -left-8 text-green-600 text-2xl">🌿</div>
-                <div className="absolute bottom-8 -right-8 text-green-600 text-2xl">🌿</div>
+          <div className="mb-12">
+            {/* Main Logo Circle with decorative elements */}
+            <div className="w-80 h-80 mx-auto mb-12 relative">
+              {/* Main circular logo */}
+              <div className="w-full h-full rounded-full border-8 border-green-700 flex items-center justify-center bg-white relative overflow-visible">
+                {/* Decorative leaf elements positioned around the circle */}
+                <div className="absolute -top-8 -right-8 text-green-600 text-4xl transform rotate-45">🌿</div>
+                <div className="absolute -bottom-8 -left-8 text-green-600 text-4xl transform -rotate-45">🌿</div>
+                <div className="absolute top-4 -left-12 text-green-600 text-3xl transform -rotate-12">🌿</div>
+                <div className="absolute bottom-4 -right-12 text-green-600 text-3xl transform rotate-12">🌿</div>
+                <div className="absolute -top-4 left-8 text-green-600 text-2xl transform rotate-90">🌿</div>
+                <div className="absolute -bottom-4 right-8 text-green-600 text-2xl transform -rotate-90">🌿</div>
                 
-                <div className="text-center">
-                  <h2 className="text-green-700 font-bold text-lg">QUERENCIA</h2>
-                  <p className="text-gray-600 text-sm">Be your own strength</p>
+                {/* Center content */}
+                <div className="text-center z-10">
+                  <h2 className="text-green-700 font-bold text-2xl tracking-wider">QUERENCIA</h2>
+                  <p className="text-gray-600 text-lg mt-2 tracking-wide">Be your own strength</p>
+                </div>
+                
+                {/* Large decorative Q with leaves */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-green-700 font-bold text-[200px] opacity-10 leading-none">Q</div>
                 </div>
               </div>
             </div>
             
-            <h1 className="text-6xl font-bold text-green-800 mb-4">
+            {/* Main heading */}
+            <h1 className="text-8xl font-bold text-green-800 mb-6 tracking-wider">
               QUERENCIA
             </h1>
-            <p className="text-2xl text-gray-700 mb-8">
+            <p className="text-3xl text-green-700 mb-12 font-medium tracking-wide">
               Be your own strength
             </p>
             
+            {/* CTA Button */}
             <Button 
               size="lg"
               onClick={() => navigate('/events')}
-              className="bg-green-700 hover:bg-green-800 text-white text-lg px-12 py-4 rounded-full"
+              className="bg-green-700 hover:bg-green-800 text-white text-xl px-16 py-6 rounded-full font-semibold tracking-wide shadow-lg hover:shadow-xl transition-all duration-300"
             >
               START YOUR JOURNEY
             </Button>
