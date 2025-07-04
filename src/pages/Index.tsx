@@ -10,197 +10,183 @@ const Index = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100">
       <Header />
       
-      {/* Hero Section - Ultra Classy Design */}
-      <section className="relative py-32 px-4 min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Sophisticated background patterns */}
+      {/* Hero Section - Enhanced with animations and gradients */}
+      <section className="relative py-20 px-4 min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Elegant geometric patterns */}
-          <div className="absolute top-0 left-0 w-full h-full opacity-5">
-            <div className="absolute top-20 left-20 w-96 h-96 border border-emerald-200 rounded-full"></div>
-            <div className="absolute bottom-20 right-20 w-80 h-80 border border-emerald-300 rounded-full"></div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-emerald-100 rounded-full"></div>
-          </div>
+          {/* Floating gradient orbs */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-green-400 to-green-600 rounded-full opacity-20 animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-green-300 to-green-500 rounded-full opacity-15 animate-bounce"></div>
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-r from-green-500 to-green-700 rounded-full opacity-10 animate-ping"></div>
           
-          {/* Subtle gradient mesh */}
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/20 via-transparent via-transparent to-slate-50/20"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-transparent"></div>
-          
-          {/* Floating elegant elements */}
-          <div className="absolute top-1/4 left-1/6 w-2 h-2 bg-emerald-400/40 rounded-full animate-pulse"></div>
-          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-slate-400/40 rounded-full animate-pulse" style={{animationDelay: '2s'}}></div>
-          <div className="absolute top-1/2 right-1/6 w-1.5 h-1.5 bg-emerald-300/40 rounded-full animate-pulse" style={{animationDelay: '4s'}}></div>
+          {/* Animated gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 via-transparent to-green-50/50 animate-pulse"></div>
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
-          {/* Sophisticated Logo Design */}
-          <div className="mb-16 animate-fade-in">
-            {/* Premium Logo Container */}
-            <div className="w-72 h-72 mx-auto mb-16 relative group">
-              {/* Subtle rotating rings */}
-              <div className="absolute inset-0 rounded-full border border-emerald-200/30 animate-spin opacity-60" style={{animationDuration: '20s'}}></div>
-              <div className="absolute inset-4 rounded-full border border-slate-200/40 animate-spin opacity-40" style={{animationDirection: 'reverse', animationDuration: '25s'}}></div>
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
+          {/* Logo and Title */}
+          <div className="mb-12 animate-fade-in">
+            {/* Main Logo Circle with enhanced decorative elements */}
+            <div className="w-80 h-80 mx-auto mb-12 relative group">
+              {/* Rotating outer ring */}
+              <div className="absolute inset-0 rounded-full border-4 border-green-200 animate-spin opacity-30"></div>
+              <div className="absolute inset-2 rounded-full border-2 border-green-300 animate-spin opacity-20" style={{animationDirection: 'reverse', animationDuration: '8s'}}></div>
               
-              {/* Main sophisticated logo circle */}
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-white via-emerald-50/30 to-white shadow-2xl border border-emerald-100/50 flex items-center justify-center relative overflow-hidden group-hover:shadow-3xl transition-all duration-700">
-                {/* Elegant decorative elements */}
-                <div className="absolute -top-6 -right-6 text-emerald-600/70 text-2xl transform rotate-45 animate-bounce opacity-80" style={{animationDelay: '0s', animationDuration: '3s'}}>🌿</div>
-                <div className="absolute -bottom-6 -left-6 text-emerald-700/70 text-2xl transform -rotate-45 animate-bounce opacity-80" style={{animationDelay: '1s', animationDuration: '3s'}}>🌿</div>
-                <div className="absolute top-8 -left-8 text-emerald-600/60 text-xl transform -rotate-12 animate-bounce opacity-70" style={{animationDelay: '2s', animationDuration: '3s'}}>🌿</div>
-                <div className="absolute bottom-8 -right-8 text-emerald-700/60 text-xl transform rotate-12 animate-bounce opacity-70" style={{animationDelay: '3s', animationDuration: '3s'}}>🌿</div>
+              {/* Main circular logo with gradient border */}
+              <div className="w-full h-full rounded-full border-8 border-gradient-to-r from-green-600 via-green-700 to-green-800 bg-gradient-to-br from-white via-green-50 to-white shadow-2xl flex items-center justify-center relative overflow-visible group-hover:scale-105 transition-transform duration-500">
+                {/* Enhanced decorative leaf elements with animations */}
+                <div className="absolute -top-8 -right-8 text-green-600 text-4xl transform rotate-45 animate-bounce" style={{animationDelay: '0s'}}>🌿</div>
+                <div className="absolute -bottom-8 -left-8 text-green-600 text-4xl transform -rotate-45 animate-bounce" style={{animationDelay: '0.5s'}}>🌿</div>
+                <div className="absolute top-4 -left-12 text-green-600 text-3xl transform -rotate-12 animate-bounce" style={{animationDelay: '1s'}}>🌿</div>
+                <div className="absolute bottom-4 -right-12 text-green-600 text-3xl transform rotate-12 animate-bounce" style={{animationDelay: '1.5s'}}>🌿</div>
+                <div className="absolute -top-4 left-8 text-green-600 text-2xl transform rotate-90 animate-bounce" style={{animationDelay: '2s'}}>🌿</div>
+                <div className="absolute -bottom-4 right-8 text-green-600 text-2xl transform -rotate-90 animate-bounce" style={{animationDelay: '2.5s'}}>🌿</div>
                 
-                {/* Refined sparkles */}
-                <div className="absolute top-14 right-14 text-amber-400/60 text-sm animate-ping opacity-60" style={{animationDuration: '3s'}}>✨</div>
-                <div className="absolute bottom-14 left-14 text-amber-300/60 text-sm animate-ping opacity-60" style={{animationDelay: '1.5s', animationDuration: '3s'}}>✨</div>
+                {/* Floating sparkles */}
+                <div className="absolute top-16 right-16 text-yellow-400 text-lg animate-ping">✨</div>
+                <div className="absolute bottom-16 left-16 text-yellow-400 text-lg animate-ping" style={{animationDelay: '1s'}}>✨</div>
+                <div className="absolute top-24 left-20 text-yellow-400 text-sm animate-ping" style={{animationDelay: '2s'}}>✨</div>
                 
-                {/* Center content with premium typography */}
+                {/* Center content with enhanced styling */}
                 <div className="text-center z-10 relative">
-                  <h2 className="text-emerald-800 font-bold text-xl tracking-[0.3em] mb-2 font-serif">QUERENCIA</h2>
-                  <p className="text-slate-600 text-sm tracking-[0.2em] font-light">Be your own strength</p>
+                  <h2 className="text-green-700 font-bold text-2xl tracking-wider mb-2 animate-pulse">QUERENCIA</h2>
+                  <p className="text-gray-600 text-lg tracking-wide bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text">Be your own strength</p>
                 </div>
                 
-                {/* Sophisticated Q backdrop */}
+                {/* Large decorative Q with enhanced styling */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-emerald-800/8 font-serif text-[160px] leading-none">Q</div>
+                  <div className="text-green-700 font-bold text-[200px] opacity-10 leading-none animate-pulse">Q</div>
                 </div>
                 
-                {/* Premium glow effect */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-500/10 to-slate-500/10 blur-2xl opacity-60"></div>
+                {/* Glowing effect */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400/20 to-green-600/20 blur-xl animate-pulse"></div>
               </div>
             </div>
             
-            {/* Elegant main heading */}
-            <div className="space-y-8">
-              <h1 className="text-7xl font-serif font-bold bg-gradient-to-r from-slate-800 via-emerald-800 to-slate-900 bg-clip-text text-transparent mb-4 tracking-wider leading-tight">
-                QUERENCIA
-              </h1>
-              <p className="text-2xl text-slate-700 mb-12 font-light tracking-[0.1em] max-w-2xl mx-auto leading-relaxed">
-                Discover your inner sanctuary of strength and growth
-              </p>
-              
-              {/* Premium CTA Button */}
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-slate-600 to-emerald-700 rounded-full blur-lg opacity-25 group-hover:opacity-40 transition-all duration-500"></div>
-                <Button 
-                  size="lg"
-                  onClick={() => navigate('/events')}
-                  className="relative bg-gradient-to-r from-emerald-700 to-slate-800 hover:from-emerald-800 hover:to-slate-900 text-white text-lg px-14 py-7 rounded-full font-medium tracking-[0.1em] shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 border border-white/20"
-                >
-                  <span className="relative z-10 flex items-center gap-3">
-                    BEGIN YOUR JOURNEY
-                    <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent rounded-full"></div>
-                </Button>
-              </div>
+            {/* Main heading with gradient text */}
+            <h1 className="text-8xl font-bold bg-gradient-to-r from-green-600 via-green-700 to-green-800 bg-clip-text text-transparent mb-6 tracking-wider animate-fade-in">
+              QUERENCIA
+            </h1>
+            <p className="text-3xl bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent mb-12 font-medium tracking-wide animate-fade-in">
+              Be your own strength
+            </p>
+            
+            {/* Enhanced CTA Button */}
+            <div className="relative group animate-fade-in">
+              <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-green-800 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
+              <Button 
+                size="lg"
+                onClick={() => navigate('/events')}
+                className="relative bg-gradient-to-r from-green-600 to-green-800 hover:from-green-700 hover:to-green-900 text-white text-xl px-16 py-6 rounded-full font-semibold tracking-wide shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+              >
+                <span className="relative z-10">START YOUR JOURNEY</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-full"></div>
+              </Button>
             </div>
           </div>
         </div>
         
-        {/* Refined floating particles */}
+        {/* Floating particles */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/3 left-1/4 w-1 h-1 bg-emerald-400/50 rounded-full animate-ping" style={{animationDuration: '4s'}}></div>
-          <div className="absolute top-2/3 right-1/3 w-0.5 h-0.5 bg-slate-400/50 rounded-full animate-ping" style={{animationDelay: '2s', animationDuration: '5s'}}></div>
-          <div className="absolute top-1/2 right-1/4 w-1 h-1 bg-emerald-300/50 rounded-full animate-ping" style={{animationDelay: '3s', animationDuration: '6s'}}></div>
+          <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-green-400 rounded-full animate-ping opacity-60"></div>
+          <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-green-500 rounded-full animate-ping opacity-40" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-green-600 rounded-full animate-ping opacity-50" style={{animationDelay: '2s'}}></div>
         </div>
       </section>
 
-      {/* Premium Statistics Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-slate-50/50 to-emerald-50/30 backdrop-blur-sm">
+      {/* Statistics Section with enhanced animations */}
+      <section className="py-16 px-4 bg-gradient-to-r from-gray-50 to-green-50">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div className="group transform hover:scale-105 transition-all duration-500 p-8 rounded-2xl bg-white/40 backdrop-blur-sm border border-white/20 shadow-xl hover:shadow-2xl">
-              <h3 className="text-6xl font-serif font-bold bg-gradient-to-br from-emerald-700 to-slate-800 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-300">4</h3>
-              <p className="text-lg text-slate-700 font-light tracking-wide">Cities Reached</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="group transform hover:scale-105 transition-all duration-300">
+              <h3 className="text-7xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent mb-2 group-hover:animate-pulse">4</h3>
+              <p className="text-xl text-gray-600 group-hover:text-green-700 transition-colors duration-300">City Reached</p>
             </div>
-            <div className="group transform hover:scale-105 transition-all duration-500 p-8 rounded-2xl bg-white/40 backdrop-blur-sm border border-white/20 shadow-xl hover:shadow-2xl">
-              <h3 className="text-6xl font-serif font-bold bg-gradient-to-br from-emerald-700 to-slate-800 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-300">100+</h3>
-              <p className="text-lg text-slate-700 font-light tracking-wide">Students Empowered</p>
+            <div className="group transform hover:scale-105 transition-all duration-300">
+              <h3 className="text-7xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent mb-2 group-hover:animate-pulse">100+</h3>
+              <p className="text-xl text-gray-600 group-hover:text-green-700 transition-colors duration-300">Students Trained</p>
             </div>
-            <div className="group transform hover:scale-105 transition-all duration-500 p-8 rounded-2xl bg-white/40 backdrop-blur-sm border border-white/20 shadow-xl hover:shadow-2xl">
-              <h3 className="text-6xl font-serif font-bold bg-gradient-to-br from-emerald-700 to-slate-800 bg-clip-text text-transparent mb-4 group-hover:scale-110 transition-transform duration-300">10+</h3>
-              <p className="text-lg text-slate-700 font-light tracking-wide">Success Stories</p>
+            <div className="group transform hover:scale-105 transition-all duration-300">
+              <h3 className="text-7xl font-bold bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent mb-2 group-hover:animate-pulse">10+</h3>
+              <p className="text-xl text-gray-600 group-hover:text-green-700 transition-colors duration-300">Success Stories</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Elegant Contact Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-white/80 to-emerald-50/20 backdrop-blur-sm">
+      {/* Contact Section with enhanced styling */}
+      <section className="py-16 px-4 bg-gradient-to-br from-white to-green-50">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-serif font-bold bg-gradient-to-r from-slate-800 to-emerald-800 bg-clip-text text-transparent mb-12 tracking-wide">CONNECT WITH US</h2>
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-green-700 to-green-900 bg-clip-text text-transparent mb-8">CONTACT US</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center max-w-4xl mx-auto">
-            <div className="text-left transform hover:scale-105 transition-all duration-500 p-8 rounded-2xl bg-white/30 backdrop-blur-sm border border-white/20 shadow-lg">
-              <h3 className="text-2xl font-serif font-bold text-slate-800 mb-3 tracking-wide">
-                Ready to begin your 
-                <span className="bg-gradient-to-r from-emerald-700 to-slate-800 bg-clip-text text-transparent block">transformative journey?</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="text-left transform hover:scale-105 transition-all duration-300">
+              <h3 className="text-3xl font-bold text-gray-800 mb-2">
+                Reach Out To Us <span className="bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent">Anytime.</span>
               </h3>
             </div>
             
-            <div className="text-right transform hover:scale-105 transition-all duration-500 p-8 rounded-2xl bg-white/30 backdrop-blur-sm border border-white/20 shadow-lg">
-              <div className="mb-6 group">
-                <p className="text-sm font-medium text-slate-700 mb-1 tracking-wide uppercase">Email</p>
-                <p className="text-lg text-slate-800 group-hover:text-emerald-700 transition-colors duration-300 font-light">contact@querencia.org</p>
+            <div className="text-right transform hover:scale-105 transition-all duration-300">
+              <div className="mb-4 group">
+                <p className="text-lg font-semibold text-gray-800 group-hover:text-green-700 transition-colors duration-300">Email</p>
+                <p className="text-lg text-gray-600 group-hover:text-green-600 transition-colors duration-300">contact@querencia.org</p>
               </div>
               <div className="group">
-                <p className="text-sm font-medium text-slate-700 mb-1 tracking-wide uppercase">Phone</p>
-                <p className="text-lg text-slate-800 group-hover:text-emerald-700 transition-colors duration-300 font-light">+91 9365477568</p>
+                <p className="text-lg font-semibold text-gray-800 group-hover:text-green-700 transition-colors duration-300">Phone</p>
+                <p className="text-lg text-gray-600 group-hover:text-green-600 transition-colors duration-300">+91 9365477568</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Premium Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-slate-50/30 to-emerald-50/20">
+      {/* Features Section with enhanced cards */}
+      <section className="py-16 px-4 bg-gradient-to-r from-gray-50 to-green-50">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-serif font-bold text-center bg-gradient-to-r from-slate-800 to-emerald-800 bg-clip-text text-transparent mb-16 tracking-wide">
-            Explore Our Offerings
+          <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-gray-800 to-green-800 bg-clip-text text-transparent mb-12">
+            Explore Our Platform
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2 bg-white/60 backdrop-blur-sm border-emerald-100/50 group overflow-hidden" onClick={() => navigate('/events')}>
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <CardHeader className="relative z-10">
-                <CardTitle className="bg-gradient-to-r from-emerald-700 to-slate-800 bg-clip-text text-transparent group-hover:from-emerald-800 group-hover:to-slate-900 transition-all duration-300 font-serif">Events Management</CardTitle>
-                <CardDescription className="group-hover:text-emerald-700 transition-colors duration-300 font-light">
-                  Discover transformative events, register for exclusive sessions, and track your journey of growth.
+            <Card className="hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 bg-gradient-to-br from-white to-green-50 border-green-200 group" onClick={() => navigate('/events')}>
+              <CardHeader>
+                <CardTitle className="bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent group-hover:from-green-700 group-hover:to-green-900 transition-all duration-300">Events Management</CardTitle>
+                <CardDescription className="group-hover:text-green-700 transition-colors duration-300">
+                  Discover and manage upcoming events, register for sessions, and track your participation.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="relative z-10">
-                <Button variant="ghost" className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50 group-hover:scale-105 transition-all duration-300 font-medium tracking-wide">
+              <CardContent>
+                <Button variant="ghost" className="text-green-600 hover:text-green-700 hover:bg-green-50 group-hover:scale-105 transition-all duration-300">
                   Explore Events →
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2 bg-white/60 backdrop-blur-sm border-emerald-100/50 group overflow-hidden" onClick={() => navigate('/internships')}>
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <CardHeader className="relative z-10">
-                <CardTitle className="bg-gradient-to-r from-emerald-700 to-slate-800 bg-clip-text text-transparent group-hover:from-emerald-800 group-hover:to-slate-900 transition-all duration-300 font-serif">Internships</CardTitle>
-                <CardDescription className="group-hover:text-emerald-700 transition-colors duration-300 font-light">
-                  Unlock career opportunities and advance your professional journey with our curated programs.
+            <Card className="hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 bg-gradient-to-br from-white to-green-50 border-green-200 group" onClick={() => navigate('/internships')}>
+              <CardHeader>
+                <CardTitle className="bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent group-hover:from-green-700 group-hover:to-green-900 transition-all duration-300">Internships</CardTitle>
+                <CardDescription className="group-hover:text-green-700 transition-colors duration-300">
+                  Find internship opportunities and advance your career with our curated programs.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="relative z-10">
-                <Button variant="ghost" className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50 group-hover:scale-105 transition-all duration-300 font-medium tracking-wide">
+              <CardContent>
+                <Button variant="ghost" className="text-green-600 hover:text-green-700 hover:bg-green-50 group-hover:scale-105 transition-all duration-300">
                   View Opportunities →
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-2xl transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2 bg-white/60 backdrop-blur-sm border-emerald-100/50 group overflow-hidden" onClick={() => navigate('/testimonials')}>
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <CardHeader className="relative z-10">
-                <CardTitle className="bg-gradient-to-r from-emerald-700 to-slate-800 bg-clip-text text-transparent group-hover:from-emerald-800 group-hover:to-slate-900 transition-all duration-300 font-serif">Success Stories</CardTitle>
-                <CardDescription className="group-hover:text-emerald-700 transition-colors duration-300 font-light">
-                  Be inspired by testimonials from our community and their transformative journeys with Querencia.
+            <Card className="hover:shadow-2xl transition-all duration-300 cursor-pointer transform hover:scale-105 hover:-translate-y-2 bg-gradient-to-br from-white to-green-50 border-green-200 group" onClick={() => navigate('/testimonials')}>
+              <CardHeader>
+                <CardTitle className="bg-gradient-to-r from-green-600 to-green-800 bg-clip-text text-transparent group-hover:from-green-700 group-hover:to-green-900 transition-all duration-300">Success Stories</CardTitle>
+                <CardDescription className="group-hover:text-green-700 transition-colors duration-300">
+                  Read testimonials from our community members and their journey with Querencia.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="relative z-10">
-                <Button variant="ghost" className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50 group-hover:scale-105 transition-all duration-300 font-medium tracking-wide">
+              <CardContent>
+                <Button variant="ghost" className="text-green-600 hover:text-green-700 hover:bg-green-50 group-hover:scale-105 transition-all duration-300">
                   Read Stories →
                 </Button>
               </CardContent>
