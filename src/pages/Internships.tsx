@@ -4,9 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FAQBot from "@/components/FAQBot";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const Internships = () => {
-  const internships = [
+  const [internships, setInternships] = useLocalStorage('internships', [
     {
       id: 1,
       title: "Software Development Intern",
@@ -16,7 +18,8 @@ const Internships = () => {
       type: "Paid",
       description: "Join our development team to work on cutting-edge web applications using React, Node.js, and cloud technologies.",
       requirements: ["Computer Science or related field", "JavaScript proficiency", "Git experience"],
-      deadline: "2024-08-15"
+      deadline: "2024-08-15",
+      applied: false
     },
     {
       id: 2,
@@ -27,7 +30,8 @@ const Internships = () => {
       type: "Paid",
       description: "Learn digital marketing strategies, content creation, and social media management in a fast-paced agency environment.",
       requirements: ["Marketing or Communications background", "Social media savvy", "Creative mindset"],
-      deadline: "2024-08-01"
+      deadline: "2024-08-01",
+      applied: false
     },
     {
       id: 3,
@@ -38,7 +42,8 @@ const Internships = () => {
       type: "Stipend",
       description: "Work alongside experienced designers to create user-centered designs for mobile and web applications.",
       requirements: ["Design portfolio", "Figma/Sketch proficiency", "User research interest"],
-      deadline: "2024-07-30"
+      deadline: "2024-07-30",
+      applied: false
     },
     {
       id: 4,
@@ -49,13 +54,20 @@ const Internships = () => {
       type: "Paid",
       description: "Analyze large datasets, create visualizations, and contribute to data-driven decision making processes.",
       requirements: ["Statistics or Data Science background", "Python/R knowledge", "SQL experience"],
-      deadline: "2024-08-10"
+      deadline: "2024-08-10",
+      applied: false
     }
-  ];
+  ]);
 
   const handleApply = (internshipId) => {
     console.log("Applying for internship:", internshipId);
-    // Application logic would go here
+    setInternships(internships => 
+      internships.map(internship => 
+        internship.id === internshipId 
+          ? { ...internship, applied: true }
+          : internship
+      )
+    );
   };
 
   return (
@@ -74,12 +86,12 @@ const Internships = () => {
                 <div className="flex justify-between items-start">
                   <div>
                     <CardTitle className="text-xl mb-1">{internship.title}</CardTitle>
-                    <CardDescription className="text-lg font-medium text-blue-600">
+                    <CardDescription className="text-lg font-medium text-green-600">
                       {internship.company}
                     </CardDescription>
                   </div>
                   <Badge variant={internship.type === 'Paid' ? 'default' : 'secondary'}>
-                    {internship.type}
+                    {internship.applied ? 'Applied' : internship.type}
                   </Badge>
                 </div>
                 <div className="flex flex-wrap gap-2 text-sm text-gray-600">
@@ -103,9 +115,10 @@ const Internships = () => {
                 <div className="flex space-x-2">
                   <Button 
                     onClick={() => handleApply(internship.id)}
-                    className="bg-blue-600 hover:bg-blue-700"
+                    className="bg-green-600 hover:bg-green-700"
+                    disabled={internship.applied}
                   >
-                    Apply Now
+                    {internship.applied ? 'Applied' : 'Apply Now'}
                   </Button>
                   <Button variant="outline">
                     Learn More
@@ -151,6 +164,7 @@ const Internships = () => {
         </Card>
       </div>
       <Footer />
+      <FAQBot />
     </div>
   );
 };

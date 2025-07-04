@@ -1,16 +1,19 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FAQBot from "@/components/FAQBot";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const EventsPage = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
-
-  const upcomingEvents = [
+  
+  // Use persistent storage for events
+  const [upcomingEvents, setUpcomingEvents] = useLocalStorage('upcomingEvents', [
     {
       id: 1,
       title: "Tech Innovation Summit",
@@ -18,7 +21,8 @@ const EventsPage = () => {
       time: "10:00 AM",
       location: "Convention Center",
       description: "Join industry leaders for cutting-edge technology discussions.",
-      status: "upcoming"
+      status: "upcoming",
+      registered: false
     },
     {
       id: 2,
@@ -27,7 +31,8 @@ const EventsPage = () => {
       time: "2:00 PM",
       location: "Meeting Room A",
       description: "Professional development and career growth strategies.",
-      status: "upcoming"
+      status: "upcoming",
+      registered: false
     },
     {
       id: 3,
@@ -36,11 +41,12 @@ const EventsPage = () => {
       time: "6:00 PM",
       location: "Rooftop Lounge",
       description: "Connect with professionals from various industries.",
-      status: "upcoming"
+      status: "upcoming",
+      registered: false
     }
-  ];
+  ]);
 
-  const pastEvents = [
+  const [pastEvents] = useLocalStorage('pastEvents', [
     {
       id: 4,
       title: "AI & Machine Learning Conference",
@@ -59,11 +65,17 @@ const EventsPage = () => {
       description: "Entrepreneurs showcase their innovative ideas.",
       status: "completed"
     }
-  ];
+  ]);
 
   const handleRegister = (eventId) => {
     console.log("Registering for event:", eventId);
-    // Registration logic would go here
+    setUpcomingEvents(events => 
+      events.map(event => 
+        event.id === eventId 
+          ? { ...event, registered: true }
+          : event
+      )
+    );
   };
 
   return (
@@ -88,7 +100,9 @@ const EventsPage = () => {
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <CardTitle className="text-xl">{event.title}</CardTitle>
-                      <Badge variant="secondary">Upcoming</Badge>
+                      <Badge variant={event.registered ? "default" : "secondary"}>
+                        {event.registered ? "Registered" : "Upcoming"}
+                      </Badge>
                     </div>
                     <CardDescription>
                       <div className="space-y-1">
@@ -102,9 +116,10 @@ const EventsPage = () => {
                     <div className="flex space-x-2">
                       <Button 
                         onClick={() => handleRegister(event.id)}
-                        className="bg-blue-600 hover:bg-blue-700"
+                        className="bg-green-600 hover:bg-green-700"
+                        disabled={event.registered}
                       >
-                        Register
+                        {event.registered ? "Registered" : "Register"}
                       </Button>
                       <Button 
                         variant="outline"
@@ -151,6 +166,7 @@ const EventsPage = () => {
         </Tabs>
       </div>
       <Footer />
+      <FAQBot />
     </div>
   );
 };

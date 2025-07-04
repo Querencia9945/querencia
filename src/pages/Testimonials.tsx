@@ -4,9 +4,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FAQBot from "@/components/FAQBot";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const Testimonials = () => {
-  const testimonials = [
+  const [testimonials] = useLocalStorage('testimonials', [
     {
       id: 1,
       name: "Sarah Johnson",
@@ -61,7 +63,7 @@ const Testimonials = () => {
       rating: 5,
       image: "/placeholder.svg"
     }
-  ];
+  ]);
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -79,7 +81,7 @@ const Testimonials = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">What Our Community Says</h1>
           <p className="text-xl max-w-3xl mx-auto">
@@ -93,7 +95,7 @@ const Testimonials = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
           <Card className="text-center">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-blue-600 mb-2">500+</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">500+</div>
               <div className="text-gray-600">Happy Members</div>
             </CardContent>
           </Card>
@@ -105,13 +107,13 @@ const Testimonials = () => {
           </Card>
           <Card className="text-center">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-purple-600 mb-2">95%</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
               <div className="text-gray-600">Satisfaction Rate</div>
             </CardContent>
           </Card>
           <Card className="text-center">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-orange-600 mb-2">200+</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">200+</div>
               <div className="text-gray-600">Career Placements</div>
             </CardContent>
           </Card>
@@ -169,6 +171,7 @@ const Testimonials = () => {
       </div>
 
       <Footer />
+      <FAQBot />
     </div>
   );
 };
