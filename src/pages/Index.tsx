@@ -1,31 +1,23 @@
-
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQBot from "@/components/FAQBot";
-
 const Index = () => {
   const navigate = useNavigate();
-
-  return (
-    <div className="min-h-screen bg-gray-50">
+  return <div className="min-h-screen bg-gray-50">
       <Header />
       
       {/* Hero Section */}
-      <section className="flex-1 flex items-center justify-center py-20 px-4">
+      <section className="flex-1 flex items-center justify-center py-20 px-4 bg-white">
         <div className="text-center max-w-2xl mx-auto">
           {/* Logo */}
           <div className="mb-12">
-            <img 
-              src="/lovable-uploads/13888463-af06-43cb-8c75-b151d7dab5e2.png" 
-              alt="Querencia Logo" 
-              className="w-80 h-80 mx-auto object-contain drop-shadow-sm"
-            />
+            <img src="/lovable-uploads/13888463-af06-43cb-8c75-b151d7dab5e2.png" alt="Querencia Logo" className="w-80 h-80 mx-auto object-contain drop-shadow-sm" />
           </div>
           
           {/* Main Heading */}
-          <h1 className="text-6xl font-bold text-green-800 mb-4 tracking-tight">
+          <h1 className="text-6xl text-green-800 mb-4 tracking-tight font-thin">
             QUERENCIA
           </h1>
           
@@ -35,11 +27,7 @@ const Index = () => {
           </p>
           
           {/* CTA Button */}
-          <Button 
-            size="lg"
-            onClick={() => navigate('/events')}
-            className="bg-green-800 hover:bg-green-900 text-white px-12 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
-          >
+          <Button size="lg" onClick={() => navigate('/events')} className="bg-green-800 hover:bg-green-900 text-white px-12 py-4 text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
             START YOUR JOURNEY
           </Button>
         </div>
@@ -96,8 +84,6 @@ const Index = () => {
 
       <Footer />
       <FAQBot />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
