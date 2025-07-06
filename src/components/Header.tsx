@@ -18,7 +18,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-8">
             <h1 
-              className="text-2xl font-bold text-blue-600 cursor-pointer hover:text-blue-700 transition-colors"
+              className="text-2xl font-bold text-emerald-600 cursor-pointer hover:text-emerald-700 transition-colors"
               onClick={() => navigate('/')}
             >
               Querencia
@@ -27,35 +27,35 @@ const Header = () => {
               <Button 
                 variant="ghost" 
                 onClick={() => navigate('/faqs')}
-                className="hover:text-blue-600"
+                className="hover:text-emerald-600"
               >
                 FAQs
               </Button>
               <Button 
                 variant="ghost" 
                 onClick={() => navigate('/internships')}
-                className="hover:text-blue-600"
+                className="hover:text-emerald-600"
               >
                 Internships
               </Button>
               <Button 
                 variant="ghost" 
                 onClick={() => navigate('/about')}
-                className="hover:text-blue-600"
+                className="hover:text-emerald-600"
               >
                 About
               </Button>
               <Button 
                 variant="ghost" 
                 onClick={() => navigate('/testimonials')}
-                className="hover:text-blue-600"
+                className="hover:text-emerald-600"
               >
                 Testimonials
               </Button>
               <Button 
                 variant="ghost" 
                 onClick={() => navigate('/events')}
-                className="hover:text-blue-600"
+                className="hover:text-emerald-600"
               >
                 Events
               </Button>
@@ -81,7 +81,7 @@ const Header = () => {
             ) : (
               <Button 
                 onClick={() => navigate('/auth')}
-                className="bg-blue-600 hover:bg-blue-700"
+                className="bg-emerald-600 hover:bg-emerald-700"
               >
                 Employee Login
               </Button>
