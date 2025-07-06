@@ -1,81 +1,128 @@
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQBot from "@/components/FAQBot";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const EventsPage = () => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  
-  // Use persistent storage for events
-  const [upcomingEvents, setUpcomingEvents] = useLocalStorage('upcomingEvents', [
-    {
-      id: 1,
-      title: "Tech Innovation Summit",
-      date: "2024-07-15",
-      time: "10:00 AM",
-      location: "Convention Center",
-      description: "Join industry leaders for cutting-edge technology discussions.",
-      status: "upcoming",
-      registered: false
-    },
-    {
-      id: 2,
-      title: "Career Development Workshop",
-      date: "2024-07-20",
-      time: "2:00 PM",
-      location: "Meeting Room A",
-      description: "Professional development and career growth strategies.",
-      status: "upcoming",
-      registered: false
-    },
-    {
-      id: 3,
-      title: "Networking Mixer",
-      date: "2024-07-25",
-      time: "6:00 PM",
-      location: "Rooftop Lounge",
-      description: "Connect with professionals from various industries.",
-      status: "upcoming",
-      registered: false
-    }
-  ]);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
 
-  const [pastEvents] = useLocalStorage('pastEvents', [
-    {
-      id: 4,
-      title: "AI & Machine Learning Conference",
-      date: "2024-06-10",
-      time: "9:00 AM",
-      location: "Auditorium",
-      description: "Deep dive into AI technologies and applications.",
-      status: "completed"
-    },
-    {
-      id: 5,
-      title: "Startup Pitch Competition",
-      date: "2024-06-05",
-      time: "1:00 PM",
-      location: "Innovation Hub",
-      description: "Entrepreneurs showcase their innovative ideas.",
-      status: "completed"
+  // Fetch upcoming events (events in the future)
+  const { data: upcomingEvents, isLoading: upcomingLoading } = useQuery({
+    queryKey: ['events', 'upcoming'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('events')
+        .select('*')
+        .gte('event_date', new Date().toISOString())
+        .order('event_date', { ascending: true });
+      
+      if (error) throw error;
+      return data;
     }
-  ]);
+  });
 
-  const handleRegister = (eventId) => {
-    console.log("Registering for event:", eventId);
-    setUpcomingEvents(events => 
-      events.map(event => 
-        event.id === eventId 
-          ? { ...event, registered: true }
-          : event
-      )
-    );
+  // Fetch past events (events in the past)
+  const { data: pastEvents, isLoading: pastLoading } = useQuery({
+    queryKey: ['events', 'past'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('events')
+        .select('*')
+        .lt('event_date', new Date().toISOString())
+        .order('event_date', { ascending: false });
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  // Fetch user's event registrations
+  const { data: userRegistrations } = useQuery({
+    queryKey: ['attendance', 'user'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('attendance')
+        .select('event_id')
+        .eq('user_id', (await supabase.auth.getUser()).data.user?.id);
+      
+      if (error) throw error;
+      return data?.map(reg => reg.event_id) || [];
+    }
+  });
+
+  // Register for event mutation
+  const registerMutation = useMutation({
+    mutationFn: async (eventId: string) => {
+      const { data: userData } = await supabase.auth.getUser();
+      if (!userData.user) throw new Error('Please log in to register for events');
+
+      const { error } = await supabase
+        .from('attendance')
+        .insert([{
+          user_id: userData.user.id,
+          event_id: eventId,
+          attended_at: new Date().toISOString()
+        }]);
+      
+      if (error) throw error;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['attendance', 'user'] });
+      toast({
+        title: "Success",
+        description: "Successfully registered for the event!"
+      });
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Registration Failed",
+        description: error.message || "Failed to register for the event",
+        variant: "destructive"
+      });
+    }
+  });
+
+  const handleRegister = async (eventId: string) => {
+    const { data: userData } = await supabase.auth.getUser();
+    if (!userData.user) {
+      toast({
+        title: "Please Log In",
+        description: "You need to be logged in to register for events",
+        variant: "destructive"
+      });
+      return;
+    }
+    registerMutation.mutate(eventId);
+  };
+
+  const isRegistered = (eventId: string) => {
+    return userRegistrations?.includes(eventId) || false;
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  const formatTime = (dateString: string) => {
+    return new Date(dateString).toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
   };
 
   return (
@@ -94,76 +141,130 @@ const EventsPage = () => {
           </TabsList>
 
           <TabsContent value="upcoming" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {upcomingEvents.map((event) => (
-                <Card key={event.id} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <CardTitle className="text-xl">{event.title}</CardTitle>
-                      <Badge variant={event.registered ? "default" : "secondary"}>
-                        {event.registered ? "Registered" : "Upcoming"}
-                      </Badge>
-                    </div>
-                    <CardDescription>
-                      <div className="space-y-1">
-                        <div>{event.date} at {event.time}</div>
-                        <div>{event.location}</div>
+            {upcomingLoading ? (
+              <div className="flex items-center justify-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {upcomingEvents?.map((event) => (
+                  <Card key={event.id} className="hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <CardTitle className="text-xl">{event.title}</CardTitle>
+                        <Badge variant={isRegistered(event.id) ? "default" : "secondary"}>
+                          {isRegistered(event.id) ? "Registered" : "Upcoming"}
+                        </Badge>
                       </div>
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 mb-4">{event.description}</p>
-                    <div className="flex space-x-2">
-                      <Button 
-                        onClick={() => handleRegister(event.id)}
-                        className="bg-green-600 hover:bg-green-700"
-                        disabled={event.registered}
-                      >
-                        {event.registered ? "Registered" : "Register"}
-                      </Button>
+                      <CardDescription>
+                        <div className="space-y-1">
+                          <div>{formatDate(event.event_date)} at {formatTime(event.event_date)}</div>
+                          {event.location && <div>{event.location}</div>}
+                        </div>
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-4">{event.description}</p>
+                      {event.max_attendees && (
+                        <p className="text-sm text-gray-500 mb-4">Max attendees: {event.max_attendees}</p>
+                      )}
+                      <div className="flex space-x-2">
+                        <Button 
+                          onClick={() => handleRegister(event.id)}
+                          className="bg-green-600 hover:bg-green-700"
+                          disabled={isRegistered(event.id) || registerMutation.isPending}
+                        >
+                          {registerMutation.isPending ? "Registering..." : 
+                           isRegistered(event.id) ? "Registered" : "Register"}
+                        </Button>
+                        <Button 
+                          variant="outline"
+                          onClick={() => setSelectedEvent(event)}
+                        >
+                          Details
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+                {upcomingEvents?.length === 0 && (
+                  <div className="col-span-full text-center py-12">
+                    <p className="text-gray-500">No upcoming events found.</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="past" className="space-y-6">
+            {pastLoading ? (
+              <div className="flex items-center justify-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {pastEvents?.map((event) => (
+                  <Card key={event.id} className="hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex justify-between items-start">
+                        <CardTitle className="text-xl">{event.title}</CardTitle>
+                        <Badge variant="outline">Completed</Badge>
+                      </div>
+                      <CardDescription>
+                        <div className="space-y-1">
+                          <div>{formatDate(event.event_date)} at {formatTime(event.event_date)}</div>
+                          {event.location && <div>{event.location}</div>}
+                        </div>
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-600 mb-4">{event.description}</p>
                       <Button 
                         variant="outline"
                         onClick={() => setSelectedEvent(event)}
                       >
-                        Details
+                        View Details
                       </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="past" className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {pastEvents.map((event) => (
-                <Card key={event.id} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex justify-between items-start">
-                      <CardTitle className="text-xl">{event.title}</CardTitle>
-                      <Badge variant="outline">Completed</Badge>
-                    </div>
-                    <CardDescription>
-                      <div className="space-y-1">
-                        <div>{event.date} at {event.time}</div>
-                        <div>{event.location}</div>
-                      </div>
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-gray-600 mb-4">{event.description}</p>
-                    <Button 
-                      variant="outline"
-                      onClick={() => setSelectedEvent(event)}
-                    >
-                      View Details
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                    </CardContent>
+                  </Card>
+                ))}
+                {pastEvents?.length === 0 && (
+                  <div className="col-span-full text-center py-12">
+                    <p className="text-gray-500">No past events found.</p>
+                  </div>
+                )}
+              </div>
+            )}
           </TabsContent>
         </Tabs>
+
+        {/* Event Details Modal */}
+        <Dialog open={!!selectedEvent} onOpenChange={() => setSelectedEvent(null)}>
+          <DialogContent className="max-w-2xl">
+            <DialogHeader>
+              <DialogTitle>{selectedEvent?.title}</DialogTitle>
+            </DialogHeader>
+            {selectedEvent && (
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-2">Event Details</h3>
+                  <div className="space-y-2 text-gray-600">
+                    <p><strong>Date:</strong> {formatDate(selectedEvent.event_date)}</p>
+                    <p><strong>Time:</strong> {formatTime(selectedEvent.event_date)}</p>
+                    {selectedEvent.location && <p><strong>Location:</strong> {selectedEvent.location}</p>}
+                    {selectedEvent.max_attendees && <p><strong>Max Attendees:</strong> {selectedEvent.max_attendees}</p>}
+                  </div>
+                </div>
+                {selectedEvent.description && (
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">Description</h3>
+                    <p className="text-gray-600">{selectedEvent.description}</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
       <Footer />
       <FAQBot />
