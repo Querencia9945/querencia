@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -48,12 +49,15 @@ const EventsPage = () => {
 
   // Fetch user's event registrations
   const { data: userRegistrations } = useQuery({
-    queryKey: ['attendance', 'user'],
+    queryKey: ['event_registrations', 'user'],
     queryFn: async () => {
+      const { data: userData } = await supabase.auth.getUser();
+      if (!userData.user) return [];
+
       const { data, error } = await supabase
-        .from('attendance')
+        .from('event_registrations')
         .select('event_id')
-        .eq('user_id', (await supabase.auth.getUser()).data.user?.id);
+        .eq('user_id', userData.user.id);
       
       if (error) throw error;
       return data?.map(reg => reg.event_id) || [];
@@ -67,17 +71,17 @@ const EventsPage = () => {
       if (!userData.user) throw new Error('Please log in to register for events');
 
       const { error } = await supabase
-        .from('attendance')
+        .from('event_registrations')
         .insert([{
           user_id: userData.user.id,
           event_id: eventId,
-          attended_at: new Date().toISOString()
+          status: 'registered'
         }]);
       
       if (error) throw error;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['attendance', 'user'] });
+      queryClient.invalidateQueries({ queryKey: ['event_registrations', 'user'] });
       toast({
         title: "Success",
         description: "Successfully registered for the event!"
@@ -263,6 +267,9 @@ const EventsPage = () => {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-green-900 mb-2">Events</h1>
           <p className="text-green-600">Discover and register for upcoming events and view past event details.</p>
+          <p className="text-green-700 mt-4">
+            Querencia has hosted 5+ offline and 20+ online events over a year. Supported well by a team of more than 150 interns, the events have enriched more than 10,000 students with 21st century skills.
+          </p>
         </div>
 
         <Tabs defaultValue="past" className="space-y-6">
@@ -309,6 +316,44 @@ const EventsPage = () => {
 
           <TabsContent value="upcoming" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Show database events first */}
+              {upcomingEvents?.map((event) => (
+                <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200">
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <CardTitle className="text-xl text-green-800">{event.title}</CardTitle>
+                      <Badge className="bg-green-600 text-white">Upcoming</Badge>
+                    </div>
+                    <CardDescription className="text-green-600">
+                      <div className="space-y-1">
+                        <div>{formatDate(event.event_date)} at {formatTime(event.event_date)}</div>
+                        {event.location && <div>{event.location}</div>}
+                      </div>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-green-700 mb-4">{event.description}</p>
+                    <div className="flex space-x-2">
+                      <Button 
+                        className="bg-green-600 hover:bg-green-700 text-white"
+                        onClick={() => handleRegister(event.id)}
+                        disabled={isRegistered(event.id) || registerMutation.isPending}
+                      >
+                        {isRegistered(event.id) ? 'Registered' : (registerMutation.isPending ? 'Registering...' : 'Register')}
+                      </Button>
+                      <Button 
+                        variant="outline"
+                        onClick={() => setSelectedEvent(event)}
+                        className="border-green-300 text-green-700 hover:bg-green-50"
+                      >
+                        Details
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+              
+              {/* Show hardcoded upcoming events */}
               {upcomingEventsData.map((event) => (
                 <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200">
                   <CardHeader>
