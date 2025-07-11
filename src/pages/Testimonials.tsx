@@ -65,6 +65,14 @@ const Testimonials = () => {
     ));
   };
 
+  const handleGetStarted = () => {
+    navigate('/events');
+  };
+
+  const handleLearnMore = () => {
+    navigate('/about');
+  };
+
   return (
     <div className="min-h-screen bg-green-50">
       <Header />
@@ -154,13 +162,13 @@ const Testimonials = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
-                onClick={() => navigate('/events')}
+                onClick={handleGetStarted}
                 className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
               >
                 Get Started
               </Button>
               <Button 
-                onClick={() => navigate('/about')}
+                onClick={handleLearnMore}
                 className="border border-green-600 text-green-600 px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
                 variant="outline"
               >
