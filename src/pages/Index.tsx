@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
@@ -55,7 +54,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <img 
-                src="/lovable-uploads/bef79e90-36c4-43ed-b559-73392bdf5e8f.png" 
+                src="/lovable-uploads/20996266-bbe4-458c-b893-2344f83d1a06.png" 
                 alt="Aman Gupta Recognition" 
                 className="w-full h-48 object-cover"
               />
@@ -67,7 +66,7 @@ const Index = () => {
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <img 
-                src="/lovable-uploads/e4539a3f-fbbc-4d18-8e70-af406db965e7.png" 
+                src="/lovable-uploads/90897efa-33ca-41ed-b779-6302d0a0e301.png" 
                 alt="Government Approval" 
                 className="w-full h-48 object-cover"
               />
@@ -79,7 +78,7 @@ const Index = () => {
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <img 
-                src="/lovable-uploads/3e557a48-ad6a-41cd-87b3-0023c5e3a8ec.png" 
+                src="/lovable-uploads/0de0e92c-362e-4031-b890-1e0c69664df7.png" 
                 alt="IIT Recognition" 
                 className="w-full h-48 object-cover"
               />
@@ -91,7 +90,7 @@ const Index = () => {
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
               <img 
-                src="/lovable-uploads/01f295ac-674b-4b90-a782-ab59564491d8.png" 
+                src="/lovable-uploads/fee99186-32cb-4b89-892f-a34f86fd890c.png" 
                 alt="University of Delaware Recognition" 
                 className="w-full h-48 object-cover"
               />

@@ -1,135 +1,159 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const AboutSection = () => {
+  const handleCurriculumOverview = () => {
+    // This will be implemented when PDF is provided
+    console.log("Curriculum overview clicked");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
+      <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About Querencia</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
-            A comprehensive platform designed to connect people, foster professional growth, 
-            and create meaningful experiences through events and opportunities.
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-4">
+            Ready to make something big together?
+          </p>
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed font-bold">
+            Let's make you your own strength.
           </p>
         </div>
       </section>
 
       <div className="max-w-7xl mx-auto py-12 px-4">
+        {/* About Querencia */}
+        <Card className="mb-12 border-green-200">
+          <CardContent className="p-8">
+            <p className="text-gray-700 leading-relaxed mb-6">
+              At Querencia, we're here to help you unlock your potential. In India, especially in tier 2 and tier 3 cities, high school and university students often miss out on the mentorship and skills they need to thrive in today's fast-paced world. That's where we step in.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              We host skill development summits, covering a vast arena of skills such as public speaking and communication, writing to publish, linkedin mastery and AI awareness. Our primary curriculum, named the Querencia Skill Development Summit consists of 6 courses, namely Entrepreneurship and Startup Simulation, Public Speaking, Design Thinking, Financial and Media Literacy, Acing Speaking Competitions (WSDC, MUNs, debates, parliaments etc.), leadership and soft skills. You can find a comprehensive guide of the same below.
+            </p>
+            <div className="mb-6">
+              <Button 
+                onClick={handleCurriculumOverview}
+                className="bg-green-600 hover:bg-green-700 text-white"
+              >
+                General Curriculum Overview
+              </Button>
+            </div>
+            <p className="text-sm text-gray-600 italic">
+              Note - The curriculum and mentors are adjusted keeping in mind the requirements of the school. The above mentioned curriculum is a generalised curriculum that we suggest to be undertaken by schools.
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Mission & Vision */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <Card>
+          <Card className="border-green-200">
             <CardHeader>
-              <CardTitle className="text-2xl text-blue-600">Our Mission</CardTitle>
+              <CardTitle className="text-2xl text-green-600">Our Mission</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-700 leading-relaxed">
-                To create a vibrant ecosystem where professionals, students, and organizations 
-                can connect, learn, and grow together. We believe in the power of community 
-                and the importance of providing accessible opportunities for career development 
-                and personal growth.
+              <p className="text-gray-700 leading-relaxed mb-4">
+                At Querencia, we believe every young person deserves the tools to lead. Our mission is to:
+              </p>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Equip students with world class training in 21st century skills such as leadership, financial literacy, public speaking etc</li>
+                <li>• Empower youth to find their voice and use it - for advocacy, impact and change</li>
+                <li>• Engage communities through transformative initiatives like youth parliaments, slum education drives and women empowerment summit</li>
+                <li>• Elevate untapped talent by offering mentorship and real world opportunities</li>
+              </ul>
+              <p className="text-gray-700 font-semibold mt-4">
+                In short, our mission is to make teenagers their own strength.
               </p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="border-green-200">
             <CardHeader>
               <CardTitle className="text-2xl text-green-600">Our Vision</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 leading-relaxed">
-                To become the leading platform that bridges the gap between talent and 
-                opportunity, fostering a world where everyone has access to the resources, 
-                connections, and experiences they need to achieve their professional aspirations.
+                To become India's most powerful youth-led movement for skill development - nurturing confident, compassionate changemakers from every corner of the country.
               </p>
             </CardContent>
           </Card>
         </div>
 
         {/* What We Do */}
-        <Card className="mb-12">
+        <Card className="mb-12 border-green-200">
           <CardHeader>
             <CardTitle className="text-3xl text-center text-gray-900 mb-6">What We Do</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🎪</span>
+            <p className="text-gray-700 leading-relaxed mb-6 text-center">
+              At Querencia, we help young people discover the power of their voice—and use it to change the world.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-8 text-center">
+              We are a youth-led organization revolutionizing how students across India learn public speaking, leadership, and life skills through real, hands-on experiences.
+            </p>
+            
+            <h3 className="text-xl font-semibold mb-6 text-gray-900">Our Key Initiatives:</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex items-start space-x-3">
+                <span className="text-2xl">🎤</span>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Public Speaking & Communication Training</h4>
+                  <p className="text-gray-600">Workshops, courses, and bootcamps that help students speak with clarity, confidence, and conviction.</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Event Management</h3>
-                <p className="text-gray-600">
-                  We organize and facilitate various events including workshops, seminars, 
-                  networking sessions, and professional development programs.
-                </p>
               </div>
 
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">💼</span>
+              <div className="flex items-start space-x-3">
+                <span className="text-2xl">🗳</span>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Youth Parliaments & Debates</h4>
+                  <p className="text-gray-600">Simulated parliamentary sessions that encourage critical thinking, policymaking, and civic engagement.</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Career Opportunities</h3>
-                <p className="text-gray-600">
-                  We connect talented individuals with internship programs and career 
-                  opportunities that align with their skills and aspirations.
-                </p>
               </div>
 
-              <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-3xl">🌐</span>
+              <div className="flex items-start space-x-3">
+                <span className="text-2xl">👩‍🏫</span>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Slum Education & Community Teaching</h4>
+                  <p className="text-gray-600">Bringing quality education and skill-building to underprivileged children through on-ground volunteering.</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Community Building</h3>
-                <p className="text-gray-600">
-                  We foster a supportive community where members can share experiences, 
-                  seek guidance, and build lasting professional relationships.
-                </p>
               </div>
-            </div>
-          </CardContent>
-        </Card>
 
-        {/* Our Values */}
-        <Card className="mb-12">
-          <CardHeader>
-            <CardTitle className="text-3xl text-center text-gray-900 mb-6">Our Values</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center">
-                <h4 className="text-lg font-semibold text-blue-600 mb-2">Innovation</h4>
-                <p className="text-sm text-gray-600">
-                  We embrace new ideas and technologies to continuously improve our platform.
-                </p>
+              <div className="flex items-start space-x-3">
+                <span className="text-2xl">♀️</span>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Women Empowerment Summits</h4>
+                  <p className="text-gray-600">Creating safe spaces for dialogue, leadership training, and mentorship for young women.</p>
+                </div>
               </div>
-              <div className="text-center">
-                <h4 className="text-lg font-semibold text-green-600 mb-2">Inclusivity</h4>
-                <p className="text-sm text-gray-600">
-                  We welcome everyone regardless of background, experience, or career stage.
-                </p>
+
+              <div className="flex items-start space-x-3">
+                <span className="text-2xl">🐾</span>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Social Impact Drives</h4>
+                  <p className="text-gray-600">From feeding stray dogs to donation campaigns, we turn compassion into action.</p>
+                </div>
               </div>
-              <div className="text-center">
-                <h4 className="text-lg font-semibold text-purple-600 mb-2">Excellence</h4>
-                <p className="text-sm text-gray-600">
-                  We strive for the highest quality in everything we do and deliver.
-                </p>
-              </div>
-              <div className="text-center">
-                <h4 className="text-lg font-semibold text-orange-600 mb-2">Growth</h4>
-                <p className="text-sm text-gray-600">
-                  We are committed to the continuous growth and development of our community.
-                </p>
+
+              <div className="flex items-start space-x-3">
+                <span className="text-2xl">🌐</span>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Skill Development Summits</h4>
+                  <p className="text-gray-600">Covering digital literacy, financial literacy, coding, entrepreneurship, and more—preparing students for a future-ready world. Typically happening in cohorts for each individual school but online cohorts are also available.</p>
+                </div>
               </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Contact Info */}
-        <Card>
+        <Card className="border-green-200">
           <CardHeader>
             <CardTitle className="text-2xl text-center text-gray-900">Get In Touch</CardTitle>
           </CardHeader>
@@ -138,18 +162,14 @@ const AboutSection = () => {
               <p className="text-gray-700">
                 Have questions or want to learn more about what we do? We'd love to hear from you!
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
                 <div>
                   <h4 className="font-semibold text-gray-900">Email</h4>
-                  <p className="text-gray-600">hello@querencia.com</p>
+                  <p className="text-gray-600">querencia.tgf@gmail.com</p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">Phone</h4>
-                  <p className="text-gray-600">+1 (555) 123-4567</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900">Office Hours</h4>
-                  <p className="text-gray-600">Mon-Fri, 9AM-6PM EST</p>
+                  <p className="text-gray-600">+91 9365477568</p>
                 </div>
               </div>
             </div>
