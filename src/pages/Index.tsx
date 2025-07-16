@@ -9,11 +9,11 @@ const Index = () => {
   const navigate = useNavigate();
   
   return (
-    <div className="min-h-screen bg-green-50">
+    <div className="min-h-screen bg-white">
       <Header />
       
-      {/* Hero Section */}
-      <section className="flex-1 flex items-center justify-center py-20 px-4 bg-gradient-to-br from-green-100 to-green-200">
+      {/* Hero Section - Changed to white background */}
+      <section className="flex-1 flex items-center justify-center py-20 px-4 bg-white">
         <div className="text-center max-w-2xl mx-auto">
           {/* Logo */}
           <div className="mb-12">
