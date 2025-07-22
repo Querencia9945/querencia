@@ -2,57 +2,68 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQBot from "@/components/FAQBot";
-import { useNavigate } from "react-router-dom";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const Testimonials = () => {
-  const navigate = useNavigate();
-
-  const testimonials = [
+  const [testimonials] = useLocalStorage('testimonials', [
     {
       id: 1,
-      name: "Saniya Bansal",
-      role: "Student",
-      company: "PGDAV College, Delhi University",
-      content: "It is a platform through which I not only develop my communication skills but also I get the chance to improve my leadership skills and identity myself new.",
+      name: "Sarah Johnson",
+      role: "Software Engineer",
+      company: "TechCorp",
+      content: "Querencia helped me land my dream internship! The platform made it easy to discover opportunities and the events were incredibly valuable for networking.",
       rating: 5,
+      image: "/placeholder.svg"
     },
     {
       id: 2,
-      name: "Durlabh Biswas",
-      role: "Student", 
-      company: "KIIT, Bhubaneswar",
-      content: "My communication skills have certainly improved since I joined. I learnt team work and team leading here. Approaching people and talking to them is something I didn't know until I joined Querencia. It was a really great experience here.",
+      name: "Michael Chen",
+      role: "Marketing Specialist",
+      company: "Creative Agency",
+      content: "The workshops and seminars on Querencia have been instrumental in my professional development. I've learned so much and made great connections.",
       rating: 5,
+      image: "/placeholder.svg"
     },
     {
       id: 3,
-      name: "Uddipa Pal",
-      role: "Student",
-      company: "NIOS, Kolkata", 
-      content: "My time management skills, being accountable for my work, public speaking, confidence, reaching out to strangers skills everything has increased!",
+      name: "Emily Rodriguez",
+      role: "UX Designer",
+      company: "Design Studio",
+      content: "As a recent graduate, Querencia provided me with the guidance and opportunities I needed to start my career. The community is supportive and inspiring.",
       rating: 5,
+      image: "/placeholder.svg"
     },
     {
       id: 4,
-      name: "Kanishkna M. Moral",
-      role: "Student",
-      company: "Royal Global School, Assam",
-      content: "It has helped my communication skills, my speaking skills, my creativity, how an organisation works, my ethics and my way of thinking",
+      name: "David Kim",
+      role: "Data Analyst",
+      company: "DataInsights Co",
+      content: "The events are well-organized and the content is always relevant. I've attended multiple workshops and each one has added real value to my skillset.",
       rating: 5,
+      image: "/placeholder.svg"
     },
     {
       id: 5,
-      name: "Nairhita S. Bhuyan", 
-      role: "Student",
-      company: "Delhi University",
-      content: "Helped me learn how to navigate through LinkedIn better",
+      name: "Lisa Thompson",
+      role: "Project Manager",
+      company: "Innovation Hub",
+      content: "Querencia has become my go-to platform for professional development. The quality of events and the networking opportunities are unmatched.",
       rating: 5,
+      image: "/placeholder.svg"
+    },
+    {
+      id: 6,
+      name: "Alex Morgan",
+      role: "Business Analyst",
+      company: "Consulting Group",
+      content: "I've been using Querencia for over a year now, and it has consistently exceeded my expectations. The team behind it really cares about the community.",
+      rating: 5,
+      image: "/placeholder.svg"
     }
-  ];
+  ]);
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -65,16 +76,8 @@ const Testimonials = () => {
     ));
   };
 
-  const handleGetStarted = () => {
-    navigate('/events');
-  };
-
-  const handleLearnMore = () => {
-    navigate('/about');
-  };
-
   return (
-    <div className="min-h-screen bg-green-50">
+    <div className="min-h-screen bg-gray-50">
       <Header />
       
       {/* Hero Section */}
@@ -89,35 +92,29 @@ const Testimonials = () => {
 
       <div className="max-w-7xl mx-auto py-12 px-4">
         {/* Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-12">
-          <Card className="text-center bg-green-100 border-green-300">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+          <Card className="text-center">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-green-600 mb-2">10,000+</div>
-              <div className="text-green-700">Happy Members</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">500+</div>
+              <div className="text-gray-600">Happy Members</div>
             </CardContent>
           </Card>
-          <Card className="text-center bg-green-100 border-green-300">
+          <Card className="text-center">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-green-600 mb-2">25+</div>
-              <div className="text-green-700">Events Hosted</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">150+</div>
+              <div className="text-gray-600">Events Hosted</div>
             </CardContent>
           </Card>
-          <Card className="text-center bg-green-100 border-green-300">
+          <Card className="text-center">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-green-600 mb-2">10,000+</div>
-              <div className="text-green-700">Students Trained</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">95%</div>
+              <div className="text-gray-600">Satisfaction Rate</div>
             </CardContent>
           </Card>
-          <Card className="text-center bg-green-100 border-green-300">
+          <Card className="text-center">
             <CardContent className="p-6">
-              <div className="text-3xl font-bold text-green-600 mb-2">100+</div>
-              <div className="text-green-700">Success Stories</div>
-            </CardContent>
-          </Card>
-          <Card className="text-center bg-green-100 border-green-300">
-            <CardContent className="p-6">
-              <div className="text-3xl font-bold text-green-600 mb-2">17+</div>
-              <div className="text-green-700">Cities</div>
+              <div className="text-3xl font-bold text-green-600 mb-2">200+</div>
+              <div className="text-gray-600">Career Placements</div>
             </CardContent>
           </Card>
         </div>
@@ -125,18 +122,19 @@ const Testimonials = () => {
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.id} className="hover:shadow-lg transition-shadow bg-white border-green-200">
+            <Card key={testimonial.id} className="hover:shadow-lg transition-shadow">
               <CardHeader className="pb-4">
                 <div className="flex items-center space-x-4">
                   <Avatar>
-                    <AvatarFallback className="bg-green-100 text-green-700">
+                    <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                    <AvatarFallback>
                       {testimonial.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
                     <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    <Badge variant="outline" className="text-xs mt-1 border-green-300 text-green-700">
+                    <Badge variant="outline" className="text-xs mt-1">
                       {testimonial.company}
                     </Badge>
                   </div>
@@ -153,27 +151,20 @@ const Testimonials = () => {
         </div>
 
         {/* Call to Action */}
-        <Card className="mt-12 bg-gradient-to-r from-green-50 to-green-100 border-green-300">
+        <Card className="mt-12 bg-gradient-to-r from-blue-50 to-purple-50">
           <CardContent className="p-8 text-center">
-            <h2 className="text-2xl font-bold text-green-900 mb-4">Ready to Join Our Community?</h2>
-            <p className="text-green-700 mb-6 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Ready to Join Our Community?</h2>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Start your journey with Querencia today. Discover events, find opportunities, 
               and connect with like-minded professionals who share your ambitions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={handleGetStarted}
-                className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors"
-              >
+              <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors">
                 Get Started
-              </Button>
-              <Button 
-                onClick={handleLearnMore}
-                className="border border-green-600 text-green-600 px-8 py-3 rounded-lg hover:bg-green-50 transition-colors"
-                variant="outline"
-              >
+              </button>
+              <button className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors">
                 Learn More
-              </Button>
+              </button>
             </div>
           </CardContent>
         </Card>

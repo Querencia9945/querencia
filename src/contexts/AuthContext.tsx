@@ -38,11 +38,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       setLoading(true);
       
-      // Updated credentials check
-      if (username === 'staff@querencia' && password === '123456') {
+      // Hardcoded credentials check
+      if (username === 'Querencia stuff' && password === '994500') {
         const userData = {
           id: 'employee-1',
-          username: 'staff@querencia',
+          username: 'Querencia stuff',
           role: 'employee'
         };
         
