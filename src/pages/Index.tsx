@@ -53,11 +53,6 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img 
-                src="/lovable-uploads/20996266-bbe4-458c-b893-2344f83d1a06.png" 
-                alt="Aman Gupta Recognition" 
-                className="w-full h-48 object-cover"
-              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-green-800 mb-2">Recognition from boAt Co-Founder</h3>
                 <p className="text-green-700">Aman Gupta, co-founder of boAt has recognised Querencia's efforts to build a better generation of skilled youth!</p>
@@ -65,11 +60,6 @@ const Index = () => {
             </div>
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img 
-                src="/lovable-uploads/90897efa-33ca-41ed-b779-6302d0a0e301.png" 
-                alt="Government Approval" 
-                className="w-full h-48 object-cover"
-              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-green-800 mb-2">Government Approval</h3>
                 <p className="text-green-700">Querencia's financial literacy curriculum has been approved by the Department of Finance, Govt. Of Assam.</p>
@@ -77,11 +67,6 @@ const Index = () => {
             </div>
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img 
-                src="/lovable-uploads/0de0e92c-362e-4031-b890-1e0c69664df7.png" 
-                alt="IIT Recognition" 
-                className="w-full h-48 object-cover"
-              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-green-800 mb-2">IIT Guwahati Recognition</h3>
                 <p className="text-green-700">Awarded by IIT Guwahati as one of the top 0.9% teen-led startups in India. Recognised as "outstanding impactful idea".</p>
@@ -89,11 +74,6 @@ const Index = () => {
             </div>
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img 
-                src="/lovable-uploads/fee99186-32cb-4b89-892f-a34f86fd890c.png" 
-                alt="University of Delaware Recognition" 
-                className="w-full h-48 object-cover"
-              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-green-800 mb-2">International Recognition</h3>
                 <p className="text-green-700">Querencia is recognised by University of Delaware, USA as one of top 100 emerging innovations.</p>
