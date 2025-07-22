@@ -113,14 +113,14 @@ const EventsPage = () => {
     return userRegistrations?.includes(eventId) || false;
   };
 
-  // Past events data with detailed descriptions
+  // Past events data with your categories
   const pastEventsData = [
     // Youth Parliaments and Skill Development Sessions
     {
       id: 'youth-1',
       title: 'Don Bosco Lichubari Model United Nations',
       category: 'Youth Parliaments and Skill Development Sessions',
-      description: 'As the pioneering post-COVID Model United Nations conference in Jorhat, this event marked a significant return to in-person collaborative learning. It successfully brought together over 220 students from more than 20 schools across the region, fostering diplomatic discourse within 6 distinct committees. Notably, it was made accessible to a broader student base by being the most affordable conference in the circuit, underscoring our commitment to inclusive skill development.',
+      description: 'A comprehensive Model United Nations event focused on developing diplomatic and communication skills.',
       event_date: '2024-03-15T10:00:00Z',
       location: 'Don Bosco Lichubari, Assam'
     },
@@ -128,7 +128,7 @@ const EventsPage = () => {
       id: 'youth-2', 
       title: 'Don Bosco Baghchung Youth Parliament',
       category: 'Youth Parliaments and Skill Development Sessions',
-      description: 'This impactful one-day youth parliament engaged over 120 participants in a crucial discussion centered on Assam\'s pressing flood issues. Through simulated parliamentary proceedings, students honed their public speaking, critical thinking, and policy formulation skills, directly addressing real-world challenges.',
+      description: 'Youth parliament session designed to enhance leadership and public speaking abilities.',
       event_date: '2024-04-20T14:00:00Z',
       location: 'Don Bosco Baghchung'
     },
@@ -136,7 +136,7 @@ const EventsPage = () => {
       id: 'youth-3',
       title: 'Querencia Youth Parliament, Pragjyotika English School',
       category: 'Youth Parliaments and Skill Development Sessions', 
-      description: 'A large-scale one-day youth parliament, this event drew over 250 participants, providing an extensive platform for young voices to engage in meaningful debates and discussions on contemporary issues. It exemplified our capacity to mobilize and empower a significant number of students within a single impactful day.',
+      description: 'Interactive youth parliament focusing on civic engagement and debate skills.',
       event_date: '2024-05-10T11:00:00Z',
       location: 'Pragjyotika English School'
     },
@@ -144,7 +144,7 @@ const EventsPage = () => {
       id: 'youth-4',
       title: 'Querencia Youth Parliament - Online Conferences',
       category: 'Youth Parliaments and Skill Development Sessions',
-      description: 'Extending our reach beyond geographical boundaries, these exclusive online conferences provided accessible platforms for youth to engage in timely discussions on current issues. These digital sessions ensure that students can continue to develop their civic awareness and argumentation skills from anywhere.',
+      description: 'Virtual youth parliament sessions accessible to students nationwide.',
       event_date: '2024-06-05T16:00:00Z',
       location: 'Online'
     },
@@ -152,7 +152,7 @@ const EventsPage = () => {
       id: 'youth-5',
       title: 'Querencia Skill Development Summit',
       category: 'Youth Parliaments and Skill Development Sessions',
-      description: 'Our intensive, two-day summits typically engage over 30 participants in deep dives into essential 21st-century skills. These sessions are structured around our core curriculum, covering vital topics like Entrepreneurship & Startup Simulation, Public Speaking, Design Thinking, Financial and Media Literacy, Acing Speaking Competitions, and Leadership & Soft Skills, providing comprehensive training for future leaders.',
+      description: 'Comprehensive summit covering essential 21st century skills for youth development.',
       event_date: '2024-07-15T09:00:00Z',
       location: 'Multiple Venues'
     },
@@ -161,9 +161,58 @@ const EventsPage = () => {
       id: 'meetup-1',
       title: 'North East Organisations Meet',
       category: 'Meet ups and fun activities',
-      description: 'This groundbreaking event was the first and only gathering in the North East dedicated to honoring social welfare NGOs. It brought together over 150 participants, including more than 60 NGO and NPO founders. This unique meet-up fostered a powerful environment where organizations shared their missions and collaboratively encouraged each other, strengthening the regional social welfare ecosystem.',
+      description: 'Networking event bringing together organizations from across Northeast India.',
       event_date: '2024-08-20T15:00:00Z',
       location: 'Guwahati, Assam'
+    },
+    {
+      id: 'meetup-2',
+      title: 'Define, 2025 - New Year Resolution Workshop',
+      category: 'Meet ups and fun activities',
+      description: 'Interactive workshop helping participants set and achieve meaningful goals for 2025.',
+      event_date: '2024-12-28T10:00:00Z',
+      location: 'Multiple Cities'
+    },
+    {
+      id: 'meetup-3',
+      title: 'Pehla Pyaar - the untold love stories',
+      category: 'Meet ups and fun activities',
+      description: 'Storytelling event celebrating first love experiences and emotional connections.',
+      event_date: '2024-02-14T18:00:00Z',
+      location: 'Community Centers'
+    },
+    // Social Welfare Initiatives
+    {
+      id: 'social-1',
+      title: 'Food Donation Drives',
+      category: 'Social Welfare Initiatives',
+      description: 'Community-driven initiative to provide meals to those in need.',
+      event_date: '2024-01-15T08:00:00Z',
+      location: 'Various Locations'
+    },
+    {
+      id: 'social-2',
+      title: 'Cloth Donation Drives',
+      category: 'Social Welfare Initiatives',
+      description: 'Collecting and distributing clothing to underprivileged communities.',
+      event_date: '2024-02-10T09:00:00Z',
+      location: 'Various Locations'
+    },
+    {
+      id: 'social-3',
+      title: 'Educational Drives in slums',
+      category: 'Social Welfare Initiatives',
+      description: 'Educational outreach programs in underprivileged areas.',
+      event_date: '2024-03-05T14:00:00Z',
+      location: 'Urban Slums'
+    },
+    {
+      id: 'social-4',
+      title: 'Orphanage Visits',
+      category: 'Social Welfare Initiatives',
+      description: 'Regular visits to orphanages providing educational and recreational activities.',
+      event_date: '2024-04-12T11:00:00Z',
+      location: 'Local Orphanages'
     }
   ];
 
@@ -218,8 +267,8 @@ const EventsPage = () => {
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-green-900 mb-2">Events</h1>
           <p className="text-green-600">Discover and register for upcoming events and view past event details.</p>
-          <p className="text-green-700 mt-4 leading-relaxed">
-            At Querencia, our commitment to empowering youth through 21st-century skills comes to life through a diverse array of impactful events. From rigorous skill development summits to engaging youth parliaments and heartwarming social welfare initiatives, we've had the privilege of hosting 25+ events that have cumulatively trained over 10,000 students and positively impacted over 10,000 happy members across 17+ cities. Each initiative is designed to foster critical thinking, leadership, and a sense of civic responsibility, helping young individuals truly become their own strength.
+          <p className="text-green-700 mt-4">
+            Querencia has hosted 5+ offline and 20+ online events over a year. Supported well by a team of more than 150 interns, the events have enriched more than 10,000 students with 21st century skills.
           </p>
         </div>
 
@@ -230,84 +279,46 @@ const EventsPage = () => {
           </TabsList>
 
           <TabsContent value="past" className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-bold text-green-800 mb-4">Youth Parliaments and Skill Development Sessions</h2>
-              <p className="text-green-700 mb-6">These flagship events are at the core of our mission, providing hands-on experience in public speaking, debate, and civic engagement, aligning with our comprehensive Querencia Skill Development Summit curriculum.</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {pastEventsData.filter(event => event.category === 'Youth Parliaments and Skill Development Sessions').map((event: any) => (
-                  <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200 cursor-pointer" onClick={() => setSelectedEvent(event)}>
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <CardTitle className="text-xl text-green-800">{event.title}</CardTitle>
-                        <Badge variant="outline" className="border-green-300 text-green-700">Completed</Badge>
-                      </div>
-                      <CardDescription className="text-green-600">
-                        <div className="space-y-1">
-                          <div>{formatDate(event.event_date)} at {formatTime(event.event_date)}</div>
-                          {event.location && <div>{event.location}</div>}
+            {Object.entries(groupEventsByCategory(pastEventsData)).map(([category, events]: [string, any]) => (
+              <div key={category}>
+                <h2 className="text-2xl font-bold text-green-800 mb-6">{category}</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {events.map((event: any) => (
+                    <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200">
+                      <CardHeader>
+                        <div className="flex justify-between items-start">
+                          <CardTitle className="text-xl text-green-800">{event.title}</CardTitle>
+                          <Badge variant="outline" className="border-green-300 text-green-700">Completed</Badge>
                         </div>
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-green-700 mb-4 line-clamp-3">{event.description}</p>
-                      <Button 
-                        variant="outline"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedEvent(event);
-                        }}
-                        className="border-green-300 text-green-700 hover:bg-green-50"
-                      >
-                        View Details
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
+                        <CardDescription className="text-green-600">
+                          <div className="space-y-1">
+                            <div>{formatDate(event.event_date)} at {formatTime(event.event_date)}</div>
+                            {event.location && <div>{event.location}</div>}
+                          </div>
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-green-700 mb-4">{event.description}</p>
+                        <Button 
+                          variant="outline"
+                          onClick={() => setSelectedEvent(event)}
+                          className="border-green-300 text-green-700 hover:bg-green-50"
+                        >
+                          View Details
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-green-800 mb-4">Meet ups and fun activities</h2>
-              <p className="text-green-700 mb-6">These engaging activities are often carried out as a joint collaboration with our sister social welfare organization, "Guzaarish." They foster community, creativity, and personal development in an informal setting.</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {pastEventsData.filter(event => event.category === 'Meet ups and fun activities').map((event: any) => (
-                  <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200 cursor-pointer" onClick={() => setSelectedEvent(event)}>
-                    <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <CardTitle className="text-xl text-green-800">{event.title}</CardTitle>
-                        <Badge variant="outline" className="border-green-300 text-green-700">Completed</Badge>
-                      </div>
-                      <CardDescription className="text-green-600">
-                        <div className="space-y-1">
-                          <div>{formatDate(event.event_date)} at {formatTime(event.event_date)}</div>
-                          {event.location && <div>{event.location}</div>}
-                        </div>
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-green-700 mb-4 line-clamp-3">{event.description}</p>
-                      <Button 
-                        variant="outline"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedEvent(event);
-                        }}
-                        className="border-green-300 text-green-700 hover:bg-green-50"
-                      >
-                        View Details
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
+            ))}
           </TabsContent>
 
           <TabsContent value="upcoming" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* Show database events first */}
               {upcomingEvents?.map((event) => (
-                <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200 cursor-pointer" onClick={() => setSelectedEvent(event)}>
+                <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200">
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <CardTitle className="text-xl text-green-800">{event.title}</CardTitle>
@@ -325,20 +336,14 @@ const EventsPage = () => {
                     <div className="flex space-x-2">
                       <Button 
                         className="bg-green-600 hover:bg-green-700 text-white"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleRegister(event.id);
-                        }}
+                        onClick={() => handleRegister(event.id)}
                         disabled={isRegistered(event.id) || registerMutation.isPending}
                       >
                         {isRegistered(event.id) ? 'Registered' : (registerMutation.isPending ? 'Registering...' : 'Register')}
                       </Button>
                       <Button 
                         variant="outline"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedEvent(event);
-                        }}
+                        onClick={() => setSelectedEvent(event)}
                         className="border-green-300 text-green-700 hover:bg-green-50"
                       >
                         Details
@@ -350,7 +355,7 @@ const EventsPage = () => {
               
               {/* Show hardcoded upcoming events */}
               {upcomingEventsData.map((event) => (
-                <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200 cursor-pointer" onClick={() => setSelectedEvent(event)}>
+                <Card key={event.id} className="hover:shadow-lg transition-shadow bg-white border-green-200">
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <CardTitle className="text-xl text-green-800">{event.title}</CardTitle>
@@ -371,10 +376,7 @@ const EventsPage = () => {
                       </Button>
                       <Button 
                         variant="outline"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelectedEvent(event);
-                        }}
+                        onClick={() => setSelectedEvent(event)}
                         className="border-green-300 text-green-700 hover:bg-green-50"
                       >
                         Details
@@ -389,14 +391,14 @@ const EventsPage = () => {
 
         {/* Event Details Modal */}
         <Dialog open={!!selectedEvent} onOpenChange={() => setSelectedEvent(null)}>
-          <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto bg-white">
+          <DialogContent className="max-w-2xl bg-white">
             <DialogHeader>
-              <DialogTitle className="text-green-800 text-2xl">{selectedEvent?.title}</DialogTitle>
+              <DialogTitle className="text-green-800">{selectedEvent?.title}</DialogTitle>
             </DialogHeader>
             {selectedEvent && (
-              <div className="space-y-6">
+              <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold text-green-900 mb-3 text-lg">Event Details</h3>
+                  <h3 className="font-semibold text-green-900 mb-2">Event Details</h3>
                   <div className="space-y-2 text-green-700">
                     <p><strong>Date:</strong> {formatDate(selectedEvent.event_date)}</p>
                     <p><strong>Time:</strong> {formatTime(selectedEvent.event_date)}</p>
@@ -406,8 +408,8 @@ const EventsPage = () => {
                 </div>
                 {selectedEvent.description && (
                   <div>
-                    <h3 className="font-semibold text-green-900 mb-3 text-lg">Description</h3>
-                    <p className="text-green-700 leading-relaxed">{selectedEvent.description}</p>
+                    <h3 className="font-semibold text-green-900 mb-2">Description</h3>
+                    <p className="text-green-700">{selectedEvent.description}</p>
                   </div>
                 )}
               </div>

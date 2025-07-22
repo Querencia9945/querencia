@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
@@ -53,6 +54,11 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/bef79e90-36c4-43ed-b559-73392bdf5e8f.png" 
+                alt="Aman Gupta Recognition" 
+                className="w-full h-48 object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-green-800 mb-2">Recognition from boAt Co-Founder</h3>
                 <p className="text-green-700">Aman Gupta, co-founder of boAt has recognised Querencia's efforts to build a better generation of skilled youth!</p>
@@ -60,6 +66,11 @@ const Index = () => {
             </div>
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/e4539a3f-fbbc-4d18-8e70-af406db965e7.png" 
+                alt="Government Approval" 
+                className="w-full h-48 object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-green-800 mb-2">Government Approval</h3>
                 <p className="text-green-700">Querencia's financial literacy curriculum has been approved by the Department of Finance, Govt. Of Assam.</p>
@@ -67,6 +78,11 @@ const Index = () => {
             </div>
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/3e557a48-ad6a-41cd-87b3-0023c5e3a8ec.png" 
+                alt="IIT Recognition" 
+                className="w-full h-48 object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-green-800 mb-2">IIT Guwahati Recognition</h3>
                 <p className="text-green-700">Awarded by IIT Guwahati as one of the top 0.9% teen-led startups in India. Recognised as "outstanding impactful idea".</p>
@@ -74,6 +90,11 @@ const Index = () => {
             </div>
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <img 
+                src="/lovable-uploads/01f295ac-674b-4b90-a782-ab59564491d8.png" 
+                alt="University of Delaware Recognition" 
+                className="w-full h-48 object-cover"
+              />
               <div className="p-6">
                 <h3 className="text-xl font-bold text-green-800 mb-2">International Recognition</h3>
                 <p className="text-green-700">Querencia is recognised by University of Delaware, USA as one of top 100 emerging innovations.</p>
